@@ -8,8 +8,8 @@ Declarative way
 ```
 kubectl create ns dev
 kubectl create ns testing
-kubectl create saiyam --image=nginx
-kubectl create saiyam --image=nginx -n dev
+kubectl create deploy saiyam --image=nginx
+kubectl create deploy saiyam --image=nginx -n dev
 
 ```
 switch the context
