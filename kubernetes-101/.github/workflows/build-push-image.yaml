@@ -1,0 +1,48 @@
+---
+name: build and push docker image
+on:
+  push
+
+jobs:
+  release-docker:
+    name: Release docker image
+    if: "!contains(github.event.head_commit.message, '[skip ci]')"
+    runs-on: ubuntu-18.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        
+      - name: Deploy docker image
+        uses: docker/build-push-action@v1
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+          repository: saiyam911/kubeworkshop
+          tag_with_ref: true
+          add_git_labels: true
+          tag_with_sha: true
+          
+      - name: Get git sha short
+        id: vars
+        run: echo "::set-output name=sha_short::$(git rev-parse --short HEAD)"
+        
+      - name: Generate deploy manifest from Jinja template
+        uses: cuchi/jinja2-action@v1.1.0
+        with: 
+          template: tmpl/hello.j2
+          output_file: deploy/hello.yaml
+          strict: true
+          variables: |
+            image_deploy_tag=sha-${{ steps.vars.outputs.sha_short }}
+            
+      - name: Commit deploy manifest on local repo
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add .
+          git commit -s -m "[skip ci] Generate deployment manifests" 
+          
+      - name: Push deploy manifests to local repo
+        uses: ad-m/github-push-action@master
+        with: 
+          github_token: ${{ secrets.AUTO_COMMIT_TOKEN }}

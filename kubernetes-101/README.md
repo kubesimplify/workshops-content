@@ -335,3 +335,134 @@ echo "Hello from Saiyam" >> /usr/share/nginx/html/index.html
 
 
 
+## Config Maps and secrets
+```
+kubectl create configmap test --from-literal=live=demo
+```
+
+```
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: null
+  labels:
+    run: busybox
+  name: busybox
+spec:
+  containers:
+  - image: busybox
+    name: busybox
+    command: ["/bin/sh","-c","printenv"]
+    env:
+      - name: LOOK
+        valueFrom:
+          configMapKeyRef:
+            name: test
+            key: live
+```
+example 2 - mount config map as volume
+
+```
+apiVersion: v1
+metadata:
+  name: demo-vol
+kind: ConfigMap
+data:
+  fileA: |-
+    hello: saiyam
+    learn: kubernete
+  fileB: test2
+```
+
+```
+apiVersion:v1
+kind: Pod
+metadata:
+  creationTimestamp: null
+  labels:
+    run: busybox
+  name: busybox2
+spec:
+  volumes:
+  - name: demo
+    configMap:
+      name: demo-vol
+  containers:
+  - image: busybox
+    name: busybox
+    command: ["sleep", "3600"]
+    volumeMounts:
+    - name: demo
+      mountPath: /home/config
+```
+exec and cat the files `kubectl exec -it busybox2 -- sh`
+
+
+SECRETS
+
+```
+kubectl create secret generic test --from-literal=live=demo
+```
+```
+
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: null
+  labels:
+    run: busybox
+  name: busybox
+spec:
+  containers:
+  - image: busybox
+    name: busybox
+    command: ["/bin/sh","-c","printenv"]
+    env:
+      - name: LOOK
+        valueFrom:
+          secretKeyRef:
+            name: test
+            key: live
+```
+
+for volumes same as config maps 
+```
+volumes:
+  - name: demo
+    secret:
+      secretName: demo-sec
+```
+
+## Authentication 
+
+```
+kubectl config view
+find the cluster name from the kubeconfig file
+export CLUSTER_NAME=
+
+export APISERVER=$(kubectl config view -o jsonpath='{.clusters[0].cluster.server}')
+curl --cacert /etc/kubernetes/pki/ca.crt $APISERVER/version
+```
+
+```
+curl --cacert /etc/kubernetes/pki/ca.crt $APISERVER/v1/deployments
+```
+The above didn't work and we need to authenticate, so let's use the first client cert
+
+`curl --cacert /etc/kubernetes/pki/ca.crt --cert client --key key $APISERVER/apis/apps/v1/deployments`
+above you can have the client and the key from the kubeconfig file
+
+Now using the sA Token 
+1.24 onwards you need to create the secret for the SA 
+```
+TOKEN=$(kubectl create token default)
+curl --cacert /etc/kubernetes/pki/ca.crt $APISERVER/apis/apps/v1 --header "Authorization: Bearer $TOKEN"
+```
+from inside pod you can use `var/run/secrets/kubernetes.io/serviceaccount/token` path for the token to call the kubernetes service
+
+proxy
+
+```
+kubectl proxy --port=8080 &s
+curl localhost:8080/apis/apps/v1/deployments
+```

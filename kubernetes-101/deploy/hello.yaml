@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: helloservice
+spec:
+  selector:
+    matchLabels:
+      app: helloservice
+  template:
+    metadata:
+      labels:
+        app: helloservice
+    spec:
+      terminationGracePeriodSeconds: 5
+      containers:
+      - name: server
+        image: saiyam911/argocd-demo:sha-8c3b778
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
+        env:
+        - name: PORT
+          value: "8080"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: helloservice
+spec:
+  selector:
+    app: helloservice
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 8080
+  type: NodePort
+
