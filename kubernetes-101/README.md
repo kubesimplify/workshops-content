@@ -452,6 +452,11 @@ The above didn't work and we need to authenticate, so let's use the first client
 `curl --cacert /etc/kubernetes/pki/ca.crt --cert client --key key $APISERVER/apis/apps/v1/deployments`
 above you can have the client and the key from the kubeconfig file
 
+```sh
+echo "<client-certificate-data_from kubeconfig>" | base64 -d > client
+echo "<client-key-data_from kubeconfig>" | base64 -d > key
+```
+
 Now using the sA Token 
 1.24 onwards you need to create the secret for the SA 
 ```
