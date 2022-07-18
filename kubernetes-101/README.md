@@ -375,7 +375,7 @@ data:
 ```
 
 ```
-apiVersion:v1
+apiVersion: v1
 kind: Pod
 metadata:
   creationTimestamp: null
