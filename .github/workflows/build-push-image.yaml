@@ -13,8 +13,9 @@ jobs:
         uses: actions/checkout@v2
         
       - name: Deploy docker image
-        uses: docker/build-push-action@v1
+        uses: docker/build-push-action@v3
         with:
+          context: "{{defaultContext}}:kubernetes-101"
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
           repository: saiyam911/kubeworkshop
@@ -29,8 +30,8 @@ jobs:
       - name: Generate deploy manifest from Jinja template
         uses: cuchi/jinja2-action@v1.1.0
         with: 
-          template: tmpl/hello.j2
-          output_file: deploy/hello.yaml
+          template: kubernetes-101/tmpl/hello.j2
+          output_file: kubernetes-101/deploy/hello.yaml
           strict: true
           variables: |
             image_deploy_tag=sha-${{ steps.vars.outputs.sha_short }}
