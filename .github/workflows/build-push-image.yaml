@@ -13,9 +13,9 @@ jobs:
         uses: actions/checkout@v2
         
       - name: Deploy docker image
-        uses: docker/build-push-action@v1
+        uses: docker/build-push-action@v3
         with:
-          context: ./kubernetes-101
+          file: ./kubernetes-101/Dockerfile
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
           repository: saiyam911/kubeworkshop
