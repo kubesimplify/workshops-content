@@ -46,4 +46,4 @@ jobs:
       - name: Push deploy manifests to local repo
         uses: ad-m/github-push-action@master
         with: 
-          github_token: ${{ secrets.AUTO_COMMIT_TOKEN }}
+          github_token: ${{ secrets.TOKEN_GITHUB }}
