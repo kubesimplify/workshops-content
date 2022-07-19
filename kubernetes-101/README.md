@@ -1,6 +1,6 @@
 ## Complete 4 hours of workshop recording is up on my YouTube channel 
 
-![](https://youtu.be/PN3VqbZqmD)
+[![Kubernetes workshop 101](https://img.youtube.com/vi/PN3VqbZqmD8/0.jpg)](https://www.youtube.com/watch?v=PN3VqbZqmD8)
 
 ## Simple pod imperative way
 
