@@ -14,7 +14,7 @@ spec:
       terminationGracePeriodSeconds: 5
       containers:
       - name: server
-        image: saiyam911/kubeworkshop:sha-09f9e13
+        image: saiyam911/kubeworkshop:sha-c9dd3df
         imagePullPolicy: Always
         ports:
         - containerPort: 8080
