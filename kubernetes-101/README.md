@@ -2,6 +2,8 @@
 
 [![Kubernetes workshop 101](https://img.youtube.com/vi/PN3VqbZqmD8/0.jpg)](https://www.youtube.com/watch?v=PN3VqbZqmD8)
 
+Download the notes from [here](https://github.com/kubesimplify/workshops-content/blob/main/kubernetes-101/Kubernetes%20workshop.pdf)
+
 ## Simple pod imperative way
 
 `kubectl run nginx --image=nginx --port 80 --dry-run=oclient -oyaml`
