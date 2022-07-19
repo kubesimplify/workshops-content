@@ -2,8 +2,9 @@
 
 [Link to the video](https://youtu.be/PN3VqbZqmD8)
 
+```
 <iframe width="560" height="315" src="https://www.youtube.com/embed/PN3VqbZqmD8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
+```
 ## Simple pod imperative way
 
 `kubectl run nginx --image=nginx --port 80 --dry-run=oclient -oyaml`
