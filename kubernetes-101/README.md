@@ -4,6 +4,8 @@
 
 Download the notes from [here](https://github.com/kubesimplify/workshops-content/blob/main/kubernetes-101/Kubernetes%20workshop.pdf)
 
+Note - If you are using these notes to take the workshops or in any way please do give credit to Saiyam Pathak and Kubesimplify by acknowledging their work. You can tag them on Twitter [Saiyam Pathak](https://twitter.com/SaiyamPathak) & [Kubesimplify](https://twitter.com/kubesimplify)
+
 ## Simple pod imperative way
 
 `kubectl run nginx --image=nginx --port 80 --dry-run=oclient -oyaml`
