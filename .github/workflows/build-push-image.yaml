@@ -22,6 +22,7 @@ jobs:
           tag_with_ref: true
           add_git_labels: true
           tag_with_sha: true
+          push: true
           
       - name: Get git sha short
         id: vars
