@@ -22,8 +22,9 @@ jobs:
           file: ./kubernetes-101/Dockerfile
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
-          tags: saiyam911/kubeworkshop:sha-${{ steps.vars.outputs.sha_short }}
           push: true
+          tags: ${{ secrets.DOCKER_USERNAME }}/kubeworkshop:sha-${{ steps.vars.outputs.sha_short }}
+          
           
       
         
