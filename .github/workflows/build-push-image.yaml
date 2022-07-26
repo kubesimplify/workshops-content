@@ -12,6 +12,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
         
+      - name: Get git sha short
+        id: vars
+        run: echo "::set-output name=sha_short::$(git rev-parse --short HEAD)"
+        
       - name: Deploy docker image
         uses: docker/build-push-action@v3
         with:
@@ -22,11 +26,10 @@ jobs:
           tag_with_ref: true
           add_git_labels: true
           tag_with_sha: true
+          tags: sha-${{ steps.vars.outputs.sha_short }}
           push: true
           
-      - name: Get git sha short
-        id: vars
-        run: echo "::set-output name=sha_short::$(git rev-parse --short HEAD)"
+      
         
       - name: Generate deploy manifest from Jinja template
         uses: cuchi/jinja2-action@v1.1.0
