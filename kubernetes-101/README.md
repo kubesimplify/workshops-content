@@ -58,8 +58,8 @@ spec:
 ### exec into the namespace or into the pod to see the IP links
 
 ```
-IP netns exec <namespace> IP link
-kubectl exec -it shared-namespace -- IP addr 
+ip netns exec <namespace> ip link
+kubectl exec -it shared-namespace -- ip addr 
 ```
 Now you will see `eth@9` -> after `@` there will be a number and you can then search its corresponding link on the node using 
 `ip link | grep -A1 ^9`
