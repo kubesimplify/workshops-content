@@ -1,0 +1,3 @@
+[submodule "Container-k8s-security/container-and-kubernetes-security-workshop"]
+	path = Container-k8s-security/container-and-kubernetes-security-workshop
+	url = https://github.com/rewanthtammana/container-and-kubernetes-security-workshop
