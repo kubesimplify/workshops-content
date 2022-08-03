@@ -1,8 +1,8 @@
-## Complete 2.5 hours of workshop recording is up on YouTube channel 
+# Complete 2.5 hours of workshop recording is up on YouTube 
 
 [![Container-and-Kubernetes-Security-Workshop](https://pbs.twimg.com/media/FZHQG5eXkAAmTWu?format=jpg&name=large)](https://www.youtube.com/watch?v=ka0C09CAfho)
 
-## container-and-kubernetes-security-workshop-notes
+# container-and-kubernetes-security-workshop-notes
 
 ## About me
 
