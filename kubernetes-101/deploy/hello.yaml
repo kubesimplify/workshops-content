@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: kubesimplify
+  name: helloservice
 spec:
   selector:
     matchLabels:
-      app: kubesimplify
+      app: helloservice
   template:
     metadata:
       labels:
-        app: kubesimplify
+        app: helloservice
     spec:
       terminationGracePeriodSeconds: 5
       containers:
       - name: server
-        image: saiyam911/kubeworkshop:sha-14697f8
+        image: saiyam911/kubeworkshop:sha-5b5b46b
         imagePullPolicy: Always
         ports:
         - containerPort: 8080
@@ -25,10 +25,10 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: kubesimplify
+  name: helloservice
 spec:
   selector:
-    app: kubesimplify
+    app: helloservice
   ports:
   - name: http
     port: 80
