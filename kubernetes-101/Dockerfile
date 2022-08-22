@@ -1,7 +1,7 @@
 FROM  tiangolo/uwsgi-nginx-flask:latest
 
 
-COPY . ./
+COPY kubernetes-101/ ./
 
 ENV PORT 8080
 
