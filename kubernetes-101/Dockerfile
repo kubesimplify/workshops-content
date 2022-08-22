@@ -5,4 +5,4 @@ COPY . ./
 
 ENV PORT 8080
 
-CMD ["python", "name.py"]
+CMD ["python", "main.py"]
