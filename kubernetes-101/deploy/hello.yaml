@@ -1,15 +1,15 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: helloservice
+  name: kubesimplify
 spec:
   selector:
     matchLabels:
-      app: helloservice
+      app: kubesimplify
   template:
     metadata:
       labels:
-        app: helloservice
+        app: kubesimplify
     spec:
       terminationGracePeriodSeconds: 5
       containers:
@@ -25,10 +25,10 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: helloservice
+  name: kubesimplify
 spec:
   selector:
-    app: helloservice
+    app: kubesimplify
   ports:
   - name: http
     port: 80
