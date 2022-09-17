@@ -1,3 +1,6 @@
 [submodule "container-and-kubernetes-security/container-and-kubernetes-security-workshop"]
 	path = container-and-kubernetes-security/container-and-kubernetes-security-workshop
 	url = https://github.com/rewanthtammana/container-and-kubernetes-security-workshop
+[submodule "chaos-workshop/kubesimplify-chaos-demo"]
+	path = chaos-workshop/kubesimplify-chaos-demo
+	url = https://github.com/ksatchit/kubesimplify-chaos-demo.git
