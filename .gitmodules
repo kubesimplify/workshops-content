@@ -4,3 +4,6 @@
 [submodule "chaos-workshop/kubesimplify-chaos-demo"]
 	path = chaos-workshop/kubesimplify-chaos-demo
 	url = https://github.com/ksatchit/kubesimplify-chaos-demo.git
+[submodule "kubernetes-observability/k8s-o11y-2022"]
+	path = kubernetes-observability/k8s-o11y-2022
+	url = https://gitlab.com/everyonecancontribute/workshops/kube-simplify/k8s-o11y-2022.git
