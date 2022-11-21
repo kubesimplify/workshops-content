@@ -335,7 +335,7 @@ spec:
 ```
 kubectl exec -it web-0 -- bash
 echo "Hello from Saiyam" >> /usr/share/nginx/html/index.html
-kubectl exec -it web-2 -- bash
+kubectl exec -it web-1 -- bash
 echo "Hello from Saiyam" >> /usr/share/nginx/html/index.html
 
 ```
