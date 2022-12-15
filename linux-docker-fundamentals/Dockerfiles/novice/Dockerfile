@@ -12,7 +12,7 @@ WORKDIR /app
 COPY . .
 
 # runs a command and creates an image layer. Used to install packages into containers
-RUN yarn install --production
+RUN yarn install --production --ignore-engines
 
 # provides a command and arguments for an executing container. Parameters can be overridden. There can be ONLY one CMD.
 CMD ["node", "src/index.js"]
