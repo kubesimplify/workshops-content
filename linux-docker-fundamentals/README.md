@@ -1647,7 +1647,7 @@ docker container rm -f todo-app
 docker container ls -a
 
 # from the gettingstarted/app dir
-docker container run -d --name todo-app -p 3000:3000 -w /app -v "$(pwd):/app" node:12-alpine sh -c "yarn install && yarn run dev"
+docker container run -d --name todo-app -p 3000:3000 -w /app -v "$(pwd):/app" node:12-alpine sh -c "yarn install --ignore-engines && yarn run dev"
 
 # '-w /app' sets the “working directory” or the current directory that the command will run from
 # '-v "$(pwd):/app"' bind mount the current directory from the host in the container into the /app directory
