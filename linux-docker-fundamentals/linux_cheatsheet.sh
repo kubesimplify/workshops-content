@@ -59,6 +59,8 @@ nice	# Starts a process with a given priority
 renice	# Changes priority of an already running process
 df	# Gives free hard disk space on your system
 free	# Gives free RAM on your system
+dpkg --print-architecture # output the primary architecture of Debian and derivatives
+rpm --eval '%{_arch}' # output the primary architecture on RPM-based systems
 
 ########## VIM EDITOR ######################
 
