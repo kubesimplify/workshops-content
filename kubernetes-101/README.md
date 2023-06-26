@@ -8,7 +8,7 @@ Note - If you are using these notes to take the workshops or in any way please d
 
 ## Simple pod imperative way
 
-`kubectl run nginx --image=nginx --port 80 --dry-run=oclient -oyaml`
+`kubectl run nginx --image=nginx --port 80 --dry-run=client -oyaml`
 
 Declarative way 
 
