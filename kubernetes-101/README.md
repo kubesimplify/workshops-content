@@ -266,7 +266,7 @@ spec:
 In the above you are asking for 2 but you will the throttled and it will be under the limit which is 1
 change CPU to 3
 
-##deployments
+## Deployments
 ```
 kubectl create deploy demo --image=nginx 
 kubectl set image deployment/nginx nginx=nginx:1.15.2 --record
